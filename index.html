@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANTAM Logam Mulia Clone - Full Version</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="mainHeader">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo Utama">
+            </div>
+            <div class="nav-actions">
+                <i class="fas fa-bars" id="menuBtn"></i> 
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebarMenu">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-container">
+                <img src="logo1.jpg" alt="Logo Sidebar">
+            </div>
+            <i class="fas fa-times close-btn" id="closeBtn"></i>
+        </div>
+        <div class="sidebar-content">
+            <button class="side-btn blue-btn" onclick="window.location.href='checkout1.html'">
+                <i class="fas fa-shopping-cart"></i> KERANJANG
+            </button>
+            <button class="side-btn blue-btn" onclick="window.location.href='login.html'">
+                <i class="fas fa-user-circle"></i> MASUK / DAFTAR
+            </button>
+        </div>
+    </div>
+
+    <section class="banner-slider">
+        <div class="slider-wrapper" id="sliderWrapper">
+            <div class="slide"><img src="promo1.jpg" alt="Promo 1"></div>
+            <div class="slide"><img src="promo2.jpg" alt="Promo 2"></div>
+            <div class="slide"><img src="promo3.jpg" alt="Promo 3"></div>
+            <div class="slide"><img src="promo4.jpg" alt="Promo 4"></div>
+            <div class="slide"><img src="promo5.jpg" alt="Promo 5"></div>
+        </div>
+        <div class="dots-container" id="dotsContainer">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </section>
+
+<div class="cta-container">
+    <a href="produk.html" style="text-decoration: none;">
+        <button class="btn-buy" id="btnBuyNow">
+            <i class="fas fa-shopping-cart"></i> BELI EMAS DISINI
+        </button>
+    </a>
+</div>
+
+
+    <section class="product-container reveal">
+        <div class="product-card">
+            <img src="emasular.jpg">
+            <h3>Emas Imlek Year of The Snake - 88 gram</h3>
+    <div class="stars">⭐⭐⭐⭐⭐ (1)</div>
+        </div>
+        <div class="product-card">
+            <img src="emashio.jpg">
+            <h3>Emas Imlek Shio Ular - 88 gram</h3>
+    <div class="stars">⭐⭐⭐⭐⭐ (3)</div>
+        </div>
+    </section>
+
+    <section class="layanan-section reveal">
+        <h2 class="gold-title">Layanan</h2>
+        <p class="section-desc">
+            Dengan kompetensi kami di bidang pemurnian, custom minting & casting, jasa analisis yang berstandar internasional dengan teknologi terkini dan ramah lingkungan, serta didukung dengan sumber daya yang profesional, kami siap membantu memenuhi kebutuhan Anda.
+        </p>
+        <div class="layanan-banner">
+            <img src="layanan.jpg" alt="Layanan Kami">
+        </div>
+    </section>
+
+    <section class="news-section reveal">
+        <h2 class="gold-title center">Berita dan Promo</h2>
+        <p class="section-desc center">
+            Semua informasi terkini, kegiatan, promo, dan perawatan menarik lainnya dari ANTAM Logam Mulia
+        </p>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-img"><img src="merah.jpg"></div>
+                <h4 class="news-title">Emas Imlek ANTAM, Hadiah Ular Kayu di Tahun Baru yang Penuh Keberuntungan</h4>
+            </div>
+            <div class="news-card">
+                <div class="news-img"><img src="biru.jpg"></div>
+                <h4 class="news-title">Enam Alasan Kamu Harus Beli Emas ANTAM LM Secara Online</h4>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section reveal">
+        <h2 class="title-section">Kenapa belanja di <span>logammuliatbk.com?</span></h2>
+        <p class="desc-full">
+            Hanya di <span>logammuliatbk.com</span> Anda mendapatkan emas batangan ANTAM LM yang asli dengan kemurnian 999.9. Produk kami memberikan keamanan dan ketenangan pikiran dalam berinvestasi.
+        </p>
+        <div class="layanan-banner">
+            <img src="mobile.jpg">
+        </div>
+    </section>
+
+    <section class="address-newsletter-section reveal">
+        <div class="address-content">
+            <h3 class="blue-info-title">Alamat</h3>
+            <div class="address-details">
+                <p>📍PT ANTAM Tbk</p>
+                <p>Unit Bisnis Pengolahan dan Pemurnian<br>
+                Logam Mulia<br>
+                Gedung Graha Dipta. Jalan Pemuda,<br>
+                No.1 Jatinegara Kaum, Pulo Gadung,<br>
+                Jakarta 13250</p>
+            </div>
+        </div>
+
+        <div class="newsletter-content">
+            <h3 class="blue-info-title">Berlangganan Buletin logammuliatbk.com</h3>
+            <div class="custom-form-group">
+                <input type="email" placeholder="Masukkan alamat email Anda" class="full-input">
+                <button type="button" class="full-gold-btn">Surat</button>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="site-footer">
+    <div class="footer-image-container">
+        <img src="footer.jpg">
+    </div>
+
+        <div class="bottom-bar">
+            <p>Logam Mulia, © 2025 Hak cipta dilindungi undang-undang.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

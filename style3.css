@@ -1,0 +1,236 @@
+/* --- Pengaturan Dasar & Variabel --- */
+:root {
+    --blue-dark: #002d72;
+    --blue-action: #2563eb; /* Biru cerah sesuai tombol di gambar */
+    --gold: #ffb400;
+    --gold-light: #fdbf45;
+    --gray-bg: #f8f9fa;
+    --text-dark: #333;
+    --sidebar-width: 85%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica', Arial, sans-serif;
+}
+
+body {
+    background-color: #fff;
+    color: var(--text-dark);
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Memastikan footer terdorong ke bawah */
+    overflow-x: hidden;
+}
+
+/* --- Header Sticky --- */
+header {
+    background: white;
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img { height: 35px; }
+
+.nav-actions i {
+    font-size: 20px;
+    margin-left: 15px;
+    color: var(--blue-dark);
+    cursor: pointer;
+}
+
+/* --- SIDEBAR & OVERLAY (Fungsi Menu Garis Tiga) --- */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+    display: none;
+    backdrop-filter: blur(2px);
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: var(--sidebar-width);
+    max-width: 350px;
+    height: 100%;
+    background: white;
+    z-index: 2000;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active { right: 0; }
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.sidebar-logo-container img { height: 40px; }
+
+.close-btn { font-size: 24px; color: #888; cursor: pointer; }
+
+.sidebar-content { padding: 30px 20px; }
+
+.side-btn {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.blue-btn { background-color: var(--blue-action); color: white; }
+
+/* --- FORM PENDAFTARAN & LOGIN (Sesuai Gambar) --- */
+.registration-container {
+    flex: 1; /* Mengisi ruang sisa agar footer di bawah */
+    padding: 40px 20px;
+    max-width: 450px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a202c;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+}
+
+.registration-form .input-group {
+    margin-bottom: 20px;
+}
+
+.registration-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #333;
+}
+
+.registration-form input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px; /* Membuat input membulat sesuai gambar */
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.registration-form input:focus {
+    border-color: var(--blue-action);
+}
+
+.registration-form input::placeholder {
+    color: #a0aec0;
+}
+
+/* --- Group Tombol --- */
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.btn-register {
+    flex: 1;
+    background-color: var(--blue-action);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn-login-alt {
+    flex: 1;
+    background-color: white;
+    color: var(--blue-action);
+    border: 1.5px solid var(--blue-action);
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.forgot-password {
+    margin-top: 25px;
+    text-align: left;
+}
+
+.forgot-password a {
+    color: var(--blue-action);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* --- FOOTER (Tetap Dipertahankan) --- */
+.footer-image-container {
+    width: 100%;
+    background-color: #fff;
+    line-height: 0;
+}
+
+.footer-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.site-footer {
+    background-color: #5c6bc0;
+    border-top: 8px solid var(--gold-light);
+    color: #fff;
+}
+
+.bottom-bar {
+    padding: 20px;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* --- Responsif --- */
+@media (min-width: 768px) {
+    .registration-container {
+        padding-top: 60px;
+    }
+}

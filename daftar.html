@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Baru - ANTAM Logam Mulia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <header id="mainHeader">
+        <nav class="navbar">
+            <div class="logo"onclick="window.location.href='index.html'">
+                <img src="logo.jpg" alt="Logo Utama">
+            </div>
+            <div class="nav-actions">
+                <i class="fas fa-shopping-bag"onclick="window.location.href='checkout.html'"></i>
+                <i class="fas fa-bars" id="menuBtn"></i> 
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebarMenu">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-container">
+                <img src="logo1.jpg" alt="Logo Sidebar">
+            </div>
+            <i class="fas fa-times close-btn" id="closeBtn"></i>
+        </div>
+        <div class="sidebar-content">
+            <button class="side-btn blue-btn" onclick="window.location.href='checkout.html'">
+                <i class="fas fa-shopping-cart"></i> KERANJANG
+            </button>
+            <button class="side-btn blue-btn" onclick="window.location.href='daftar.html'">
+                <i class="fas fa-user-circle"></i> MASUK DAFTAR
+            </button>
+        </div>
+    </div>
+
+    <main class="registration-container">
+        <h2 class="form-title">Daftar Baru</h2>
+
+<form action="#" class="registration-form" id="regForm">
+    <div class="input-group">
+        <label>Nama Lengkap</label>
+        <input type="text" id="nama" placeholder="Nama Lengkap" required>
+        <span class="error-message" style="color:red;display:none;">Bidang ini harus diisi</span>
+    </div>
+    <div class="input-group">
+        <label>E-mail</label>
+        <input type="email" id="email" placeholder="E-mail" required>
+        <span class="error-message" style="color:red;display:none;">Bidang ini harus diisi</span>
+    </div>
+    <div class="input-group">
+        <label>Nomor HP</label>
+        <input type="text" id="hp" placeholder="08xxxxxxxxxx" required>
+        <span class="error-message" style="color:red;display:none;">Bidang ini harus diisi</span>
+    </div>
+    <div class="input-group">
+        <label>Kata sandi</label>
+        <input type="password" id="password1" placeholder="Kata sandi" required>
+        <span class="error-message" style="color:red;display:none;">Bidang ini harus diisi</span>
+    </div>
+    <div class="input-group">
+        <label>Masukkan Ulang Kata Sandi</label>
+        <input type="password" id="password2" placeholder="Kata Sandi" required>
+        <span class="error-message" style="color:red;display:none;">Bidang ini harus diisi</span>
+    </div>
+    <div class="button-group">
+        <button type="submit" class="btn-register">Daftar Baru</button>
+</form>
+                <button type="button" class="btn-login-alt"onclick="window.location.href='login.html'">Login</button>
+    </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-image-container">
+            <img src="footer.jpg" alt="Footer Image">
+        </div>
+        <div class="bottom-bar">
+            <p>Logam Mulia, © 2025 Hak cipta dilindungi undang-undang.</p>
+        </div>
+    </footer>
+
+    <script src="script2.js"></script>
+    <script>
+document.getElementById('regForm').addEventListener('submit', function(e) {
+    let valid = true;
+    const fields = ['nama', 'email', 'hp', 'password1', 'password2'];
+    fields.forEach(function(id) {
+        const input = document.getElementById(id);
+        const error = input.nextElementSibling;
+        if (!input.value.trim()) {
+            error.style.display = 'block';
+            valid = false;
+        } else {
+            error.style.display = 'none';
+        }
+    });
+    if (!valid) {
+        e.preventDefault();
+    } else {
+        // Ganti 'login.html' dengan tujuan setelah daftar berhasil
+        window.location.href = 'login.html';
+    }
+});
+</script>
+</body>
+</html>

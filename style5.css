@@ -1,0 +1,761 @@
+/* --- ROOT & VARIABEL --- */
+:root {
+    --blue-dark: #002d72;
+    --blue-action: #2563eb;
+    --gold: #ffb400;
+    --gold-light: #fdbf45;
+    --green-cart: #28a745;
+    --red-buy: #e53e3e;
+    --bg-gray: #f8f9fa;
+    --text-dark: #333;
+    --gold-button: #d4b161; /* Warna tombol emas sesuai gambar */
+}
+
+/* --- DASAR --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Helvetica', Arial, sans-serif; 
+}
+
+body { 
+    background: #fff; 
+    color: var(--text-dark);
+    line-height: 1.5;
+    overflow-x: hidden; 
+}
+
+/* --- HEADER & NAVIGASI --- */
+header { 
+    background: white; 
+    padding: 10px 15px; 
+    border-bottom: 1px solid #eee; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+}
+
+.navbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.logo img { 
+    height: 35px; 
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.nav-actions i { 
+    font-size: 20px; 
+    margin-left: 15px; 
+    color: var(--blue-dark); 
+    cursor: pointer; 
+}
+
+/* Badge Keranjang */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #e53e3e;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* --- SIDEBAR & OVERLAY --- */
+.sidebar-overlay { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1500; 
+    display: none; 
+}
+
+.sidebar { 
+    position: fixed; 
+    top: 0; 
+    right: -100%; 
+    width: 85%; 
+    max-width: 350px; 
+    height: 100%; 
+    background: white; 
+    z-index: 2000; 
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active { right: 0; }
+
+.sidebar-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px; 
+    border-bottom: 1px solid #f1f1f1; 
+}
+
+.side-btn { 
+    width: 100%; 
+    padding: 14px; 
+    margin-bottom: 12px; 
+    border: none; 
+    border-radius: 4px; 
+    font-weight: 700; 
+    background-color: var(--blue-action); 
+    color: white; 
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* --- UI KERANJANG BELANJA (FINAL) --- */
+.cart-full-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 3000;
+    display: none; 
+    flex-direction: column;
+}
+
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cart-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+}
+
+.cart-content {
+    flex: 1;
+    overflow-y: auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px 0;
+    color: #333;
+}
+
+/* Bagian Seleksi Header */
+.cart-selection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1;
+    border-top: 1px solid #f1f1f1;
+}
+
+.btn-bulk-delete {
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Custom Checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    user-select: none;
+}
+
+.checkbox-container input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #fff;
+    border-color: var(--gold-button);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--gold-button);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Kartu Item Keranjang */
+.cart-item-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #f8f8f8;
+    gap: 12px;
+}
+
+.item-img-sm {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.item-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.item-price {
+    color: #e53e3e;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.item-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+/* Kontrol Quantity Mini */
+.mini-qty-control {
+    display: flex;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.mini-qty-control button {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.mini-qty-control input {
+    width: 35px;
+    border: none;
+    text-align: center;
+    font-size: 13px;
+    background: #fff;
+}
+
+/* Sticky Summary Footer Keranjang */
+.cart-summary-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+
+.total-section { display: flex; flex-direction: column; }
+.total-label { font-size: 12px; color: #888; text-transform: uppercase; }
+.total-amount { font-size: 18px; font-weight: bold; color: #e53e3e; }
+
+.btn-checkout {
+    background: #e0e0e0;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-checkout.active {
+    background: var(--gold-button);
+}
+
+/* --- EMPTY STATE KERANJANG --- */
+.empty-state {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.empty-state p {
+    color: #999;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.btn-start-shopping {
+    background: var(--gold-button);
+    color: white;
+    border: none;
+    padding: 12px 45px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- FOOTER BIRU (MODAL KERANJANG) --- */
+.cart-footer {
+    background: #5c6bc0; 
+    color: white;
+    padding: 35px 25px;
+}
+
+.footer-info {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 25px;
+}
+
+.footer-label {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.footer-icons { display: flex; gap: 15px; font-size: 18px; }
+
+/* --- HALAMAN PRODUK (KODINGAN ASLI) --- */
+.product-container { padding-bottom: 40px; }
+.product-banner img { width: 100%; display: block; }
+.product-details { padding: 20px; }
+.product-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; }
+.product-rating { display: flex; align-items: center; gap: 5px; color: var(--gold); font-size: 14px; margin-bottom: 10px; }
+.product-price { font-size: 22px; font-weight: 800; margin-bottom: 5px; }
+.product-stock { color: var(--green-cart); font-size: 13px; margin-bottom: 15px; }
+
+.qty-wrapper { 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 20px; 
+    border: 1px solid #ddd; 
+    width: fit-content; 
+    border-radius: 4px; 
+}
+
+.qty-btn { width: 40px; height: 40px; border: none; background: #f1f1f1; cursor: pointer; font-size: 18px; }
+#qtyInput { width: 50px; text-align: center; border: none; outline: none; }
+
+.action-buttons { display: flex; flex-direction: column; gap: 10px; }
+.btn-buy-now { background: var(--red-buy); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; }
+.btn-add-cart { background: var(--green-cart); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; }
+
+/* --- FOOTER SITUS UTAMA --- */
+.site-footer { 
+    background: #5c6bc0; 
+    border-top: 8px solid var(--gold-light); 
+    color: white; 
+}
+
+.footer-image-container img { width: 100%; display: block; }
+.bottom-bar { padding: 20px; text-align: center; font-size: 13px; opacity: 0.8; }
+
+/* --- PRODUCT GRID --- */
+.product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 15px 20px; }
+.product-card { border: 1px solid #eee; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; background: #fff; }
+.card-img img { width: 100%; height: auto; }
+.card-body { padding: 10px; flex: 1; display: flex; flex-direction: column; }
+.p-price { font-weight: bold; font-size: 15px; color: #000; margin-bottom: 5px; }
+.p-title { font-size: 12px; color: var(--blue-action); margin-bottom: 10px; line-height: 1.4; height: 34px; overflow: hidden; }
+.p-rating { font-size: 10px; color: var(--gold); }
+.card-footer-btns { display: flex; gap: 5px; margin-top: auto; }
+.btn-view { flex: 1; background: var(--blue-action); color: white; border: none; padding: 8px; border-radius: 4px; font-size: 11px; font-weight: bold; cursor: pointer; }
+
+/* --- 5. Grid Produk (2 Kolom) --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0 15px 20px;
+}
+
+.product-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img img { width: 100%; height: auto; }
+
+.card-body { padding: 10px; flex: 1; display: flex; flex-direction: column; }
+
+.p-price { font-weight: bold; font-size: 15px; color: #000; margin-bottom: 5px; }
+
+.p-title {
+    font-size: 12px;
+    color: var(--blue-action);
+    height: 34px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.p-rating {
+    font-size: 10px;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.p-rating span { color: #888; margin-left: 4px; }
+
+.card-footer-btns { display: flex; gap: 5px; margin-top: auto; }
+
+.btn-share {
+    padding: 8px;
+    border: 1px solid #eee;
+    background: #f8f9fa;
+    border-radius: 4px;
+    color: #777;
+}
+
+.btn-view {
+    flex: 1;
+    background: var(--blue-action);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.product-description { padding: 20px; font-size: 14px; color: #555; line-height: 1.6; border-top: 1px solid #eee; }
+/* Reviews */
+.review-summary-box { text-align: center; padding: 20px; }
+.big-score { font-size: 40px; font-weight: bold; }
+.stars-large { color: var(--gold); font-size: 24px; }
+.review-item { padding: 20px; background: #f9f9f9; margin: 0 20px; border-radius: 30px; }
+.reviewer-name { font-weight: bold; font-size: 13px; text-transform: uppercase; }
+.review-meta { display: flex; justify-content: space-between; margin: 5px 0; font-size: 12px; }
+.review-text { font-size: 14px; color: #444; }
+
+/* --- Penambahan Style Keranjang Sesuai Gambar --- */
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #d0021b;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.cart-sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 4000;
+    display: none;
+    justify-content: flex-end;
+}
+
+.cart-modal {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-modal-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-item-ui {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+    border-bottom: 1px solid #f9f9f9;
+    padding-bottom: 15px;
+}
+
+.cart-item-ui img { width: 60px; height: 60px; border-radius: 8px; }
+
+.item-details { flex: 1; }
+.item-details h4 { font-size: 13px; margin-bottom: 5px; color: #333; }
+.item-details p { color: #d0021b; font-weight: bold; font-size: 14px; }
+
+.qty-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    width: fit-content;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.qty-box button {
+    background: #f8f9fa;
+    border: none;
+    padding: 5px 12px;
+    cursor: pointer;
+}
+
+.qty-box span { padding: 0 15px; font-size: 14px; }
+
+.cart-modal-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background: #fff;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.total-price-text { color: #d0021b; font-size: 18px; }
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    background: #ccc;
+    color: #fff;
+}
+
+.checkout-btn.active {
+    background: var(--blue-action);
+    color: #fff;
+}
+
+.empty-text { text-align: center; color: #888; margin-top: 50px; }
+/* --- Tambahan Harga Coret & Badge Diskon --- */
+
+/* Badge Diskon di atas Gambar */
+.card-img {
+    position: relative; /* Agar posisi badge bisa diatur */
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #d0021b; /* Warna merah */
+    color: white;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+/* Style Harga Lama (Dicoret) */
+.p-price-old {
+    font-size: 11px;
+    color: #999;
+    text-decoration: line-through; /* Membuat garis coret */
+    margin-bottom: 2px;
+}
+
+/* Penyesuaian Harga Baru agar lebih menonjol */
+.p-price {
+    margin-bottom: 5px;
+    color: #d0021b !important; /* Opsional: Ubah warna harga utama jadi merah/kontras */
+}
+/* --- Style Tambahan: Diskon & Harga Coret --- */
+
+.card-img {
+    position: relative; /* Diperlukan agar badge bisa menempel di gambar */
+}
+
+.discount-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #d0021b; /* Warna merah kontras */
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 7px;
+    border-radius: 4px;
+    z-index: 5;
+    text-transform: uppercase;
+}
+
+.p-price-old {
+    font-size: 11px;
+    color: #999;
+    text-decoration: line-through; /* Membuat efek coretan */
+    margin-bottom: 2px;
+}
+
+/* Memastikan harga utama tetap menonjol */
+.p-price {
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+/* --- Penyesuaian Harga & Badge --- */
+.card-img {
+    position: relative; /* Agar badge menempel di gambar */
+}
+
+.discount-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #d0021b; /* Warna merah sesuai brand */
+    color: #fff;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+.p-price-old {
+    font-size: 10px;
+    color: #999;
+    text-decoration: line-through; /* Efek coretan harga */
+    margin-bottom: 2px;
+}
+
+.p-price {
+    color: #d0021b !important; /* Menonjolkan harga baru */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Memastikan tombol tetap rapi dalam grid 2 kolom */
+.card-footer-btns {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.sidebar-overlay { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1500; 
+    display: none; 
+}
+
+.sidebar { 
+    position: fixed; 
+    top: 0; 
+    right: -100%; 
+    width: var(--sidebar-width); 
+    max-width: 350px; 
+    height: 100%; 
+    background: white; 
+    z-index: 2000; 
+    transition: 0.3s; 
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active { right: 0; }
+
+.sidebar-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px; 
+    border-bottom: 1px solid #f1f1f1; 
+}
+
+.sidebar-logo-container img { height: 40px; }
+
+.close-btn { font-size: 24px; color: #888; cursor: pointer; }
+
+.sidebar-content { padding: 30px 20px; }
+
+/* Style Tombol Sidebar Persis Login.html */
+.side-btn { 
+    width: 100%; 
+    padding: 14px; 
+    margin-bottom: 12px; 
+    border: none; 
+    border-radius: 4px; 
+    font-weight: 700; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.blue-btn { background-color: var(--blue-action); color: white; }

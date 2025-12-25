@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk - ANTAM Logam Mulia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+
+    <header id="mainHeader">
+        <nav class="navbar">
+            <div class="logo"onclick="window.location.href='index.html'">
+                <img src="logo.jpg" alt="Logo Utama">
+            </div>
+            <div class="nav-actions">
+                <i class="fas fa-shopping-bag"onclick="window.location.href='checkout.html'"></i>
+                <i class="fas fa-bars" id="menuBtn"></i> 
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebarMenu">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-container">
+                <img src="logo1.jpg" alt="Logo Sidebar">
+            </div>
+            <i class="fas fa-times close-btn" id="closeBtn"></i>
+        </div>
+        <div class="sidebar-content">
+            <button class="side-btn blue-btn" onclick="window.location.href='checkout.html'">
+                <i class="fas fa-shopping-cart"></i> KERANJANG
+            </button>
+            
+            <button class="side-btn blue-btn" onclick="window.location.href='daftar.html'">
+                <i class="fas fa-user-circle"></i> MASUK / DAFTAR
+            </button>
+        </div>
+    </div>
+
+    <main class="product-catalog">
+        <div class="banner-top">
+            <img src="banner.jpg" alt="Banner Promo">
+        </div>
+
+        <div class="instruction-box">
+            <p>Klik icon <i class="fas fa-bars"></i> di sudut kanan atas, Pilih <span class="highlight">LOGIN / DAFTAR BARU</span> terlebih dahulu, untuk mempermudah transaksi & pengecekan Serta memeriksa Orderan !!!</p>
+        </div>
+
+        <div class="filter-container">
+            <div class="category-scroll" id="categoryTabs">
+                <button class="cat-btn active" data-category="semua">Emas Batangan</button>
+            </div>
+            
+            <div class="sort-wrapper">
+                <div class="custom-select-trigger" id="openSortModal">
+                    <span id="currentSortText">Urutkan berdasarkan</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+<div class="product-grid" id="productGrid">
+    <div class="product-card">
+        <div class="card-img">
+            <img src="emas0.png" alt="Produk">
+            <div class="discount-badge">Disc 30%</div>
+        </div>
+        <div class="card-body">
+            <p class="p-price-old">Rp 1.281.000</p>
+            <p class="p-price">Rp 896.700</p>
+            <p class="p-title">Emas Batangan - 0,5 gram</p>
+            <div class="p-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span>( 5.0 ) ( 10 )</span>
+            </div>
+            <div class="card-footer-btns">
+                <button class="btn-share"><i class="fas fa-share-alt"></i></button>
+                <button class="btn-view" onclick="window.location.href='cart0.html'">Lihat Detail</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="card-img">
+            <img src="emas1.png" alt="Produk">
+            <div class="discount-badge">Disc 40%</div>
+        </div>
+        <div class="card-body">
+            <p class="p-price-old">Rp 2.460.000</p>
+            <p class="p-price">Rp 1.476.000</p>
+            <p class="p-title">Emas Batangan - 1 gram</p>
+            <div class="p-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span>( 5.0 ) ( 6 )</span>
+            </div>
+            <div class="card-footer-btns">
+                <button class="btn-share"><i class="fas fa-share-alt"></i></button>
+                <button class="btn-view"onclick="window.location.href='cart1.html'">Lihat Detail</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="card-img">
+            <img src="emas2.png" alt="Produk">
+            <div class="discount-badge">Disc 40%</div>
+        </div>
+        <div class="card-body">
+            <p class="p-price-old">4.864.000</p>
+            <p class="p-price">Rp 2.918.400</p>
+            <p class="p-title">Emas Batangan - 2 gram</p>
+            <div class="p-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span>( 5.0 ) ( 4 )</span>
+            </div>
+            <div class="card-footer-btns">
+                <button class="btn-share"><i class="fas fa-share-alt"></i></button>
+                <button class="btn-view"onclick="window.location.href='cart2.html'">Lihat Detail</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="card-img">
+            <img src="emas3.png" alt="Produk">
+            <div class="discount-badge">Disc 50%</div>
+        </div>
+        <div class="card-body">
+            <p class="p-price-old">7.271.000</p>
+            <p class="p-price">Rp 3.635.500</p>
+            <p class="p-title">Emas Batangan - 3 gram</p>
+            <div class="p-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span>( 5.0 ) ( 3 )</span>
+            </div>
+            <div class="card-footer-btns">
+                <button class="btn-share"><i class="fas fa-share-alt"></i></button>
+                <button class="btn-view"onclick="window.location.href='cart3.html'">Lihat Detail</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="card-img">
+            <img src="emas5.png" alt="Produk">
+            <div class="discount-badge">Disc 50%</div>
+        </div>
+        <div class="card-body">
+            <p class="p-price-old">Rp 12.085.000</p>
+            <p class="p-price">Rp 6.042.500</p>
+            <p class="p-title">Emas Batangan - 5 gram</p>
+            <div class="p-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span>( 5.0 ) ( 2 )</span>
+            </div>
+            <div class="card-footer-btns">
+                <button class="btn-share"><i class="fas fa-share-alt"></i></button>
+                <button class="btn-view"onclick="window.location.href='cart5.html'">Lihat Detail</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div class="pagination-container">
+            <span class="nav-text">Sudah menampilkan semua produk</span>
+        </div>
+    </main>
+
+    <div class="modal-overlay-sort" id="sortModalOverlay">
+        <div class="sort-modal-content">
+            <div class="modal-sort-item active" data-sort="default">
+                <span>Urutkan berdasarkan</span>
+                <div class="radio-outer"><div class="radio-inner"></div></div>
+            </div>
+            <div class="modal-sort-item" data-sort="low">
+                <span>Harga Terendah</span>
+                <div class="radio-outer"><div class="radio-inner"></div></div>
+            </div>
+            <div class="modal-sort-item" data-sort="high">
+                <span>Harga Tertinggi</span>
+                <div class="radio-outer"><div class="radio-inner"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-image-container">
+            <img src="footer.jpg" alt="Footer Image">
+        </div>
+        <div class="bottom-bar">
+            <p>Logam Mulia, © 2025 Hak cipta dilindungi undang-undang.</p>
+        </div>
+    </footer>
+
+    <script src="script4.js"></script>
+</body>
+</html>

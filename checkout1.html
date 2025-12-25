@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja - Logam Mulia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style6.css">
+</head>
+<body>
+
+    <div class="cart-container">
+
+<header class="cart-header">
+    <div class="logo"onclick="window.location.href='produk.html'">
+        <img src="logo.jpg" alt="Logo"></div>
+    <div class="nav-actions">
+        <div class="cart-icon-wrapper">
+            <i class="fas fa-shopping-bag"></i>
+            <span id="cartBadge" class="cart-badge">0</span>
+        </div>
+        <i class="fas fa-times close-icon"onclick="window.location.href='index.html'"></i>
+    </div>
+</header>
+
+        
+        <div class="cart-content">
+            <h2 class="cart-title">Keranjang Belanja</h2>
+            
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <p>Keranjang belanja Anda kosong</p>
+                <button class="btn-start-shopping" onclick="window.location.href='index.html'">Mulai Belanja</button>
+            </div>
+            
+            <div id="cartActiveState">
+                <div class="cart-selection-header">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="selectAllCheckbox" onclick="toggleSelectAll(this)">
+                        <span class="checkmark"></span>
+                        Pilih Semua ( <span id="selectedCount">0</span> )
+                    </label>
+                    <span class="btn-bulk-delete" onclick="removeSelected()">Hapus</span>
+                </div>
+
+                <div id="itemList">
+                    </div>
+
+                <div class="cart-summary-footer">
+                    <div class="total-section">
+                        <span class="total-label">Total</span>
+                        <span class="total-amount" id="cartTotalPrice">Rp 0</span>
+                    </div>
+                    <button class="btn-checkout" id="btnCheckout" disabled>Checkout</button>
+                </div>
+            </div>
+        </div>
+
+    <footer class="site-footer">
+        <div class="footer-image-container">
+            <img src="footer.jpg" alt="Footer Image">
+        </div>
+        <div class="bottom-bar">
+            <p>Logam Mulia, © 2025 Hak cipta dilindungi undang-undang.</p>
+        </div>
+    </footer>
+    </div>
+
+    <script src="script6.js"></script>
+</body>
+</html>

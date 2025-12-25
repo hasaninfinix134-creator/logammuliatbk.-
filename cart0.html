@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emas Antam LM Gift Series - Logam Mulia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style5.css">
+</head>
+<body>
+
+    <header id="mainHeader">
+        <nav class="navbar">
+            <div class="logo"onclick="window.location.href='produk.html'">
+                <img src="logo.jpg" alt="Logo Utama">
+            </div>
+            <div class="nav-actions">
+                <div style="position: relative; display: inline-block;">
+                    <i class="fas fa-shopping-bag" id="cartIcon"></i>
+                    <span id="cartBadge" class="cart-badge">0</span>
+                </div>
+                <i class="fas fa-bars" id="menuBtn"></i> 
+            </div>
+        </nav>
+    </header>
+
+    <div id="cartModal" class="cart-full-overlay">
+        <div class="cart-container">
+            <header class="cart-header">
+                <div class="logo"><img src="logo.jpg" alt="Logo"></div>
+                <div class="nav-actions">
+                    <i class="fas fa-shopping-bag" style="color: var(--blue-dark);"></i>
+                    <i class="fas fa-times" id="closeCart" style="cursor:pointer; margin-left:15px;"></i>
+                </div>
+            </header>
+            
+            <div class="cart-content">
+                <h2 class="cart-title">Keranjang Belanja</h2>
+                
+                <div id="cartItemsContainer" style="width: 100%;">
+                    <div class="empty-state" id="emptyState">
+                        <p>Keranjang belanja Anda kosong</p>
+                        <button class="btn-start-shopping" onclick="hideCart()">Mulai Belanja</button>
+                    </div>
+                    
+                    <div id="cartActiveState" style="display: none;">
+                        <div class="cart-selection-header">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="selectAll">
+                                <span class="checkmark"></span>
+                                Pilih Semua ( <span id="selectedCount">0</span> )
+                            </label>
+                            <span class="btn-bulk-delete" onclick="removeSelected()">Hapus</span>
+                        </div>
+
+                        <div id="itemList">
+                            </div>
+
+                        <div class="cart-summary-footer">
+                            <div class="total-section">
+                                <span class="total-label">Total</span>
+                                <span class="total-amount" id="cartTotalPrice">Rp 0</span>
+                            </div>
+                            <button class="btn-checkout" id="btnCheckout" disabled>Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="cart-footer">
+                <div class="footer-info">
+                    <div class="footer-col">
+                        <p class="footer-label">Akreditasi</p>
+                        <div class="footer-icons">
+                            <i class="fas fa-certificate"></i>
+                            <i class="fas fa-award"></i>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <p class="footer-label">Sertifikat</p>
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                </div>
+                <p class="copyright">Logam Mulia, © 2025 Hak cipta dilindungi undang-undang.</p>
+            </footer>
+        </div>
+    </div>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="sidebar" id="sidebarMenu">
+    <div class="sidebar-header">
+        <div class="sidebar-logo-container">
+            <img src="logo1.jpg" alt="Logo Sidebar">
+        </div>
+        <i class="fas fa-times close-btn" id="closeBtn"></i>
+    </div>
+    <div class="sidebar-content">
+        <button class="side-btn blue-btn" id="sideCartBtn">
+            <i class="fas fa-shopping-cart"onclick="window.location.href='checkout.html.html'"></i> KERANJANG
+        </button>
+        
+        <button class="side-btn blue-btn" onclick="window.location.href='daftar.html'">
+            <i class="fas fa-user-circle"onclick="window.location.href='daftar.html'"></i> MASUK DAFTAR
+        </button>
+    </div>
+</div>
+
+
+    <main class="product-container">
+        <div class="product-banner">
+            <img src="emas0.png" alt="Emas Antam Natal">
+        </div>
+
+        <section class="product-details">
+            <h1 class="product-title">Emas Batangan - 0,5 gram</h1>
+            <div class="product-rating">
+                <span class="rating-score">5.0</span>
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(10 ulasan)</span>
+            </div>
+            <div class="p-price-old">1.281.000</div>
+            <div class="product-price">Rp 896.700</div>
+            <div class="product-stock">Stok: 16</div>
+
+            <div class="qty-wrapper">
+                <button class="qty-btn" id="minusBtn">-</button>
+                <input type="number" id="qtyInput" value="1" min="1">
+                <button class="qty-btn" id="plusBtn">+</button>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-buy-now" onclick="window.location.href='payment.html'">Beli Sekarang</button>
+                <button class="btn-add-cart">Tambah ke keranjang</button>
+            </div>
+            <br>
+
+        <section class="reviews-section"> 
+            <h2 class="section-title">Ulasan Produk</h2>
+            <div class="review-summary-box">
+                <div class="big-score">5.0 <span class="small-text">/ 5</span></div>
+                <div class="stars-large">★★★★★</div>
+                <div class="total-reviews">10 Ulasan</div>
+            </div>
+
+            <div class="review-list">
+                <div class="review-item">
+                    <div class="reviewer-name">Rian Hidayat</div>
+                    <div class="review-meta">
+                        <span class="stars-gold">★★★★★</span>
+                        <span class="review-date">22 Des 2025, 17:39</span>
+                    </div>
+                    <p class="review-text">Barang original, segel aman. Scan CertiEye langsung tembus 'Authentic'. Cocok buat cicil tabungan!</p>
+                </div>
+            </div>
+            <br>
+
+            <div class="review-list">
+                <div class="review-item">
+                    <div class="reviewer-name">Dewi Sartika</div>
+                    <div class="review-meta">
+                        <span class="stars-gold">★★★★★</span>
+                        <span class="review-date">20 Des 2025, 14:40</span>
+                    </div>
+                    <p class="review-text">Kemasannya cantik dan elegan, cocok banget buat kado pernikahan. Pengiriman cepat dan aman</p>
+                </div>
+            </div>
+            <br>
+
+                        <div class="review-list">
+                <div class="review-item">
+                    <div class="reviewer-name">Fajar Pratama</div>
+                    <div class="review-meta">
+                        <span class="stars-gold">★★★★★</span>
+                        <span class="review-date">18 Des 2025, 11:20</span>
+                    </div>
+                    <p class="review-text">Logam Mulia asli Antam memang paling terpercaya. Harga buyback stabil dan sangat likuid</p>
+                </div>
+            </div>
+                        <br>
+
+                            <div class="review-item">
+                    <div class="reviewer-name">Siti Aminah</div>
+                    <div class="review-meta">
+                        <span class="stars-gold">★★★★★</span>
+                        <span class="review-date">15 Des 2025, 12:32</span>
+                    </div>
+                    <p class="review-text">Baru mulai nabung emas dari yang 0.5 gram. Kecil-kecil cabai rawit, investasi masa depan!</p>
+                </div>
+            </div>
+                        <br>
+
+                            <div class="review-item">
+                    <div class="reviewer-name">YOSE MINDO ASI, BORU HARAHAP</div>
+                    <div class="review-meta">
+                        <span class="stars-gold">★★★★★</span>
+                        <span class="review-date">13 Des 2025, 11:32</span>
+                    </div>
+                    <p class="review-text">Barang nya sudah sampai, suka bentuk nya sama kemasannya</p>
+                </div>
+            </div>
+                        <br>
+
+                            <div class="review-item">
+                    <div class="reviewer-name">Bambang S.</div>
+                    <div class="review-meta">
+                        <span class="stars-gold">★★★★★</span>
+                        <span class="review-date">10 Des 2025, 17:39</span>
+                    </div>
+                    <p class="review-text">Packing sangat rapi, emas terlindungi sempurna di dalam CertiCard. Seller responsif</p>
+                </div>
+            </div>
+                        <br>
+
+                            <div class="review-item">
+                    <div class="reviewer-name">Larasati Putri</div>
+                    <div class="review-meta">
+                        <span class="stars-gold">★★★★★</span>
+                        <span class="review-date">05 Des 2025, 01:50</span>
+                    </div>
+                    <p class="review-text">Suka banget sama desain barunya. Simpel, mewah, dan praktis disimpan di dompet.</p>
+                </div>
+            </div>
+                        <br>
+
+                            <div class="review-item">
+                    <div class="reviewer-name">Hendra Wijaya</div>
+                    <div class="review-meta">
+                        <span class="stars-gold">★★★★★</span>
+                        <span class="review-date">01 Des 2025, 14:23</span>
+                    </div>
+                    <p class="review-text">Sudah langganan beli Antam. Kualitas 999.9 tidak perlu diragukan lagi. Puas sekali.</p>
+                </div>
+            </div>
+                        <br>
+
+                            <div class="review-item">
+                    <div class="reviewer-name">Maya Indah</div>
+                    <div class="review-meta">
+                        <span class="stars-gold">★★★★★</span>
+                        <span class="review-date">28 Nov 2025, 15:31</span>
+                    </div>
+                    <p class="review-text">Tadi sudah cek keaslian lewat aplikasi dan hasilnya valid. Recomended buat investor pemula.</p>
+                </div>
+            </div>
+                        <br>
+
+                            <div class="review-item">
+                    <div class="reviewer-name">Kevin Sanjaya</div>
+                    <div class="review-meta">
+                        <span class="stars-gold">★★★★★</span>
+                        <span class="review-date">20 Nov 2025, 07:13</span>
+                    </div>
+                    <p class="review-text">Solusi buat yang mau kasih hadiah bermanfaat. Fisik emasnya berkilau, cetakannya rapi</p>
+                </div>
+            </div>
+
+        </section>
+        <section class="product-description">
+            <p>Meskipun hadir dalam gramasi paling mungil, yaitu 0.5 gram, produk ini tetap mempertahankan standar kemurnian 999.9 yang sama dengan ukuran besar lainnya. Emas ini diletakkan secara presisi di bagian tengah kemasan kartu yang memiliki nomor seri berawalan L. Desain kartu yang luas memberikan ruang bagi informasi keamanan dan branding yang jelas, sementara bagian jendela transparan memungkinkan pemilik untuk melihat detail motif pada kedua sisi emas tanpa harus merusak segel. Varian ini menjadi bukti kemudahan bagi masyarakat untuk memiliki emas murni dalam satuan terkecil, namun tetap dengan jaminan keamanan sertifikasi internasional yang melekat kuat pada kartu CertiCard-nya.</p>
+        </section>
+<p><h3><b>Produk Lainnya</b></h3></p>
+
+<div class="product-grid" id="productGrid">
+    <div class="product-card">
+        <div class="card-img">
+            <img src="emas1.png" alt="Produk">
+            <div class="discount-badge">Disc 40%</div>
+        </div>
+        <div class="card-body">
+            <p class="p-price-old">Rp 2.460.000</p>
+            <p class="p-price">Rp 1.476.000</p>
+            <p class="p-title">Emas Batangan - 1 gram</p>
+            <div class="p-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span>( 5.0 ) ( 6 )</span>
+            </div>
+            <div class="card-footer-btns">
+                <button class="btn-share"><i class="fas fa-share-alt"></i></button>
+                <button class="btn-view"onclick="window.location.href='cart1.html'">Lihat Detail</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="card-img">
+            <img src="emas2.png" alt="Produk">
+            <div class="discount-badge">Disc 40%</div>
+        </div>
+        <div class="card-body">
+            <p class="p-price-old">4.864.000</p>
+            <p class="p-price">Rp 2.918.400</p>
+            <p class="p-title">Emas Batangan - 2 gram</p>
+            <div class="p-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span>( 5.0 ) ( 4 )</span>
+            </div>
+            <div class="card-footer-btns">
+                <button class="btn-share"><i class="fas fa-share-alt"></i></button>
+                <button class="btn-view"onclick="window.location.href='cart2.html'">Lihat Detail</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="card-img">
+            <img src="emas3.png" alt="Produk">
+            <div class="discount-badge">Disc 50%</div>
+        </div>
+        <div class="card-body">
+            <p class="p-price-old">7.271.000</p>
+            <p class="p-price">Rp 3.635.500</p>
+            <p class="p-title">Emas Batangan - 3 gram</p>
+            <div class="p-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span>( 5.0 ) ( 3 )</span>
+            </div>
+            <div class="card-footer-btns">
+                <button class="btn-share"><i class="fas fa-share-alt"></i></button>
+                <button class="btn-view"onclick="window.location.href='cart3.html'">Lihat Detail</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <div class="card-img">
+            <img src="emas5.png" alt="Produk">
+            <div class="discount-badge">Disc 50%</div>
+        </div>
+        <div class="card-body">
+            <p class="p-price-old">Rp 12.085.000</p>
+            <p class="p-price">Rp 6.042.500</p>
+            <p class="p-title">Emas Batangan - 5 gram</p>
+            <div class="p-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span>( 5.0 ) ( 2 )</span>
+            </div>
+            <div class="card-footer-btns">
+                <button class="btn-share"><i class="fas fa-share-alt"></i></button>
+                <button class="btn-view"onclick="window.location.href='cart5.html'">Lihat Detail</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-image-container">
+            <img src="footer.jpg" alt="Footer Image">
+        </div>
+        <div class="bottom-bar">
+            <p>Logam Mulia, © 2025 Hak cipta dilindungi undang-undang.</p>
+        </div>
+    </footer>
+
+    <script src="script5.js"></script>
+    <script>
+document.getElementById('btnCheckout').addEventListener('click', function() {
+    window.location.href = 'payment.html';
+});
+</script>
+</body>
+</html>

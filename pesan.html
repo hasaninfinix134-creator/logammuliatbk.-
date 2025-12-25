@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ANTAM Logam Mulia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style8.css">
+</head>
+<body>
+
+    <header id="mainHeader">
+        <nav class="navbar">
+            <div class="logo"onclick="window.location.href='index.html'">
+                <img src="logo.jpg" alt="Logo Utama">
+            </div>
+            <div class="nav-actions">
+                <i class="fas fa-shopping-bag"></i>
+                <i class="fas fa-bars" id="menuBtn"></i> 
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebarMenu">
+        <div class="sidebar-header">
+            <div class="sidebar-logo-container">
+                <img src="logo1.jpg" alt="Logo Sidebar">
+            </div>
+            <i class="fas fa-times close-btn" id="closeBtn"></i>
+        </div>
+        <div class="sidebar-content">
+            <button class="side-btn blue-btn" onclick="window.location.href='checkout.html'">
+                <i class="fas fa-shopping-cart"></i> KERANJANG
+            </button>
+            
+            <button class="side-btn blue-btn" onclick="window.location.href='daftar.html'">
+                <i class="fas fa-user-circle"></i> MASUK DAFTAR
+            </button>
+        </div>
+    </div>
+
+     <div class="error-container" id="errorBox">
+        <div class="icon-box">
+            <span class="error-icon">⚠️</span>
+        </div>
+        <h2>Oops! Ada yang salah</h2>
+        <p>Terjadi kendala teknis, silakan tekan tombol di bawah untuk mengulangi proses.</p>
+        <button class="retry-btn" onclick="retryAction()">Coba Lagi</button>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-image-container">
+            <img src="footer.jpg" alt="Footer Image">
+        </div>
+        <div class="bottom-bar">
+            <p>Logam Mulia, © 2025 Hak cipta dilindungi undang-undang.</p>
+        </div>
+    </footer>
+
+    <script src="script8.js"></script>
+</body>
+</html>

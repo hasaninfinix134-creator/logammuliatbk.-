@@ -1,0 +1,324 @@
+/* --- KONFIGURASI WARNA & VARIABEL --- */
+:root {
+    --blue-dark: #002d72;
+    --blue-footer: #5c6bc0;
+    --gold-accent: #ffb400;
+    --gold-button: #d4b161;
+    --red-price: #e53e3e;
+    --bg-light: #f8f9fa;
+    --text-main: #333;
+    --white: #ffffff;
+    --border-color: #eeeeee;
+}
+
+/* --- DASAR & RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Menjaga footer tetap di bawah jika konten sedikit */
+}
+
+/* --- KONTEN UTAMA --- */
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    z-index: 1000;
+}
+
+.cart-header .logo img {
+    height: 30px;
+}
+
+.cart-content {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 0 20px 0; /* Padding bawah tipis agar tidak melar */
+}
+
+.cart-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 25px 0;
+}
+
+/* --- DAFTAR ITEM --- */
+.cart-selection-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: #f9f9f9;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cart-item-card {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f1f1f1;
+    gap: 15px;
+}
+
+.item-img-sm {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.item-details { flex: 1; }
+.item-name { font-size: 14px; font-weight: bold; }
+.item-price { color: var(--red-price); font-weight: 800; }
+
+/* --- TOMBOL CHECKOUT (STICKY LIMIT) --- */
+.cart-summary-footer {
+    position: sticky;
+    bottom: 0; /* Menempel di bawah layar */
+    width: 100%;
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+    border-top: 1px solid var(--border-color);
+    z-index: 500; /* Di bawah footer biru saat scroll mentok */
+}
+
+.total-amount {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--red-price);
+}
+
+.btn-checkout {
+    background: #e0e0e0;
+    color: #999;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-checkout.active {
+    background: var(--gold-button);
+    color: white;
+    cursor: pointer;
+}
+
+/* --- FOOTER BIRU (FINAL & PROPORSIONAL) --- */
+.cart-footer {
+    background: var(--blue-footer);
+    color: var(--white);
+    padding: 30px 25px;
+    position: relative;
+    z-index: 1100; /* Menutupi checkout saat di-scroll ke paling bawah */
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.footer-label {
+    color: var(--gold-accent);
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+}
+
+.copyright {
+    font-size: 11px;
+    opacity: 0.7;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 15px;
+    text-align: center;
+}
+
+/* --- CUSTOM CHECKBOX --- */
+.checkbox-container {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.checkbox-container input { position: absolute; opacity: 0; }
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    border-color: var(--gold-button);
+}
+
+.checkbox-container .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--gold-button);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Responsif Mobile */
+@media (max-width: 480px) {
+    .cart-summary-footer { padding: 12px 15px; }
+    .btn-checkout { padding: 10px 20px; }
+}
+/* --- HEADER NAVIGATION --- */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    z-index: 1000;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    /* Memberikan jarak antar ikon agar tidak dempet (15px sampai 20px ideal) */
+    gap: 20px; 
+}
+
+.cart-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--blue-dark);
+    font-size: 1.2rem;
+}
+
+.close-icon {
+    font-size: 1.3rem;
+    color: var(--blue-dark);
+    cursor: pointer;
+    /* Tambahan padding klik agar mudah ditekan di HP */
+    padding: 5px; 
+    transition: color 0.2s;
+}
+
+.close-icon:hover {
+    color: var(--red-price);
+}
+
+/* --- BADGE POSISI --- */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--red-price);
+    color: white;
+    font-size: 10px;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    border: 2px solid var(--white); /* Memberi list putih agar badge terlihat jelas */
+}
+/* --- EMPTY STATE STYLING (Sesuai Gambar) --- */
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-state p {
+    color: #888;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.btn-start-shopping {
+    background-color: var(--gold-button); /* Menggunakan variabel warna emas Anda */
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    min-width: 200px; /* Memberikan lebar minimal agar proporsional seperti di gambar */
+}
+
+.btn-start-shopping:hover {
+    background-color: #c4a050; /* Warna emas sedikit lebih gelap saat hover */
+}
+/* --- FOOTER SITUS UTAMA --- */
+.site-footer { 
+    background: #5c6bc0; 
+    border-top: 8px solid #fdbf45; /* var(--gold-light) */
+    color: white; 
+}
+
+.footer-image-container img { 
+    width: 100%; 
+    display: block; 
+}
+
+.bottom-bar { 
+    padding: 20px; 
+    text-align: center; 
+    font-size: 13px; 
+    opacity: 0.8; 
+}
